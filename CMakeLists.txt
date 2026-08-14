@@ -23,7 +23,7 @@ include(${CMAKE_CURRENT_BINARY_DIR}/cmake/CPM.cmake)
 # --- duneanaobj ---
 
 if(NOT DUNE_ANAOBJ_BRANCH)
-  set(DUNE_ANAOBJ_BRANCH v03_16_00)
+  set(DUNE_ANAOBJ_BRANCH v04_01_00)
 endif()
 
 find_package(duneanaobj QUIET)
