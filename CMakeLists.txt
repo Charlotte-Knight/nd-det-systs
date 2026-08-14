@@ -32,7 +32,7 @@ if(NOT TARGET duneanaobj::StandardRecord) # need to fetch it
   FetchContent_Declare(
       duneanaobj
       GIT_REPOSITORY https://github.com/DUNE/duneanaobj.git
-      GIT_TAG        ${DUNE_ANAOBJ_BRANCH}
+      GIT_TAG        d16c3b1
     )
   set(SKIP_CET ON)
   FetchContent_MakeAvailable(duneanaobj)
@@ -43,18 +43,20 @@ target_include_directories(dune_nd_det_systs INTERFACE
 
 if(TARGET duneanaobj::StandardRecord)
   target_link_libraries(dune_nd_det_systs INTERFACE
-    duneanaobj::StandardRecord)
+    duneanaobj::StandardRecord
+    duneanaobj::StandardRecord_dict)
 elseif(TARGET StandardRecord)
   target_link_libraries(dune_nd_det_systs INTERFACE
-    StandardRecord)
+    StandardRecord
+    StandardRecord_dict)
 else()
   message(FATAL_ERROR "Could not find a duneanaobj StandardRecord target")
 endif()
 
 # compilation on some systems does not work without this option, this forces the standard record to actually be linked in
-target_link_options(dune_nd_det_systs INTERFACE
-    "LINKER:--no-as-needed"
-)
+#target_link_options(dune_nd_det_systs INTERFACE
+#    "LINKER:--no-as-needed"
+#)
 
 # --- duneanasel ---
 
