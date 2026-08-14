@@ -51,6 +51,11 @@ else()
   message(FATAL_ERROR "Could not find a duneanaobj StandardRecord target")
 endif()
 
+# compilation on some systems does not work without this option, this forces the standard record to actually be linked in
+target_link_options(dune_nd_det_systs INTERFACE
+    "LINKER:--no-as-needed"
+)
+
 # --- duneanasel ---
 
 # CPMAddPackage(
